@@ -1,8 +1,8 @@
 <?php
-require ' connect-db.php';
+include 'connect-db.php';
 if (isset($_POST['connect']))
 {
-    $dbLink = $_POST['$dbLink'];
+    $dbLink = connect_bd();
     $mail = $_POST['login_mail'];
     $mdp = $_POST['login_mdp'];
 

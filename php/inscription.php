@@ -1,9 +1,9 @@
 <?php
-require 'connect-db.php';
+include 'connect-db.php';
 if (isset($_POST['inscript']))
 {
     session_start();
-    $dbLink = $_POST['$dbLink'];
+    $dbLink = connect_bd();
     $mail = $_POST('ins_mail');
     $pseudo = $_POST('ins_pseudo');
     $mdp = $_POST('ins_mdp');

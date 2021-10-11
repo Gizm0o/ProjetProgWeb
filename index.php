@@ -6,12 +6,13 @@
 ?>
 
 <div class="Bloc">
-    <border>
+    <nav>
         <a class="Logo" href="http://besnard.alwaysdata.net/"><img class="logo" src="images/Vanestarre.png" height="60px" width="110px" ></a>
-    </border>
+    </nav>
     <div class="Publi">
-        <h1 class="name">Vanestarre</h1>
-
+        <header>
+            <h1 class="name">Vanestarre</h1>
+    </header>
     </div>
 </div>
 

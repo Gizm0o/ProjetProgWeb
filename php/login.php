@@ -17,12 +17,22 @@ if (isset($_POST['connect']))
     $query_mdp = "SELECT MDP FROM USER WHERE '$mail' = MAIL";
     $result = mysqli_query($dbLink, $query_mdp);
 
-    if ($result == $mdp_hash)
+    if (password_verify($mdp_hash, $result));
     {
+        $query_id = "SELECT ID FROM USER WHERE MAIL = '$mail'";
+        $result_id = mysqli_query($dbLink, $query_id);
+        $_SESSION['user'] =  $result_id;
 
-    }
-    else
-    {
+        $query_role = "SELECT ROLE FROM USER WHERE MAIL = '$mail'";
+        $result_role = mysqli_query($dbLink, $query_role);
 
+        if ($result_role == 1)
+        {
+            header(vanestarre.php);
+        }
+        else
+        {
+            header(membre.php);
+        }
     }
 }

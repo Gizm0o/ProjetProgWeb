@@ -1,0 +1,41 @@
+body{
+    background-color: blueviolet;
+    margin: 0em;
+}
+border{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: pink;
+    z-index: 2;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: auto;
+}
+.Logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.Publi{
+    display: flex;
+    text-align: center;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 200px;
+    z-index: 1;
+}
+.name{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    font-size: 10em;
+    color: powderblue;
+}

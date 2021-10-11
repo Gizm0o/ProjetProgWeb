@@ -7,7 +7,7 @@
 
 <div class="Bloc">
     <nav>
-        <a class="Logo" href="http://besnard.alwaysdata.net/"><img class="logo" src="images/Vanestarre.png" height="60px" width="110px" ></a>
+        <a class="Logo" href="images/Capture.PNG"><img class="logo" src="images/Vanestarre.png" height="60px" width="110px" ></a>
     </nav>
     <div class="Publi">
         <header>

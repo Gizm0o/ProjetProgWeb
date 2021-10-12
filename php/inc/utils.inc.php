@@ -34,9 +34,19 @@ function emptyInputSignup($mail, $pseudo, $mdp, $vmdp): bool
     }
     return $result;
 }
+function emptyInputLogin($pseudo, $mdp): bool
+{
+    if (empty($pseudo)  || empty($mdp)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
 function invalidMail($mail): bool
 {
-    if (filter_var($mail, FILTER_VALIDATE_EMAIL)){
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)){
         $result = true;
     }
     else{
@@ -91,5 +101,27 @@ function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
     header('location: ../signup.php?error=none');
 }
 
+function userLogin($connect, $pseudo, $mdp){
+    $pseudo_exist = exist($connect, $pseudo, $pseudo);
 
+    if ($pseudo_exist === false){
+        header('location: ../loginPage.php?error=login');
+        exit();
+    }
+
+    $mdp_hash = $pseudo_exist['MDP'];
+    $verif = password_verify($mdp, $mdp_hash);
+
+    if ($verif === false){
+        header('location: ../loginPage.php?error=login');
+        exit();
+    }
+    elseif ($verif === true){
+        session_start();
+        $_SESSION['user_id'] = $pseudo_exist['ID'];
+        $_SESSION['pseudo_id'] = $pseudo_exist['PSEUDO'];
+        $_SESSION['role'] = $pseudo_exist['ROLE'];
+        header('location: ../index.php');
+    }
+}
 

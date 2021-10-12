@@ -1,38 +1,32 @@
 <?php
-include 'connectdb.inc.php';
-if (isset($_POST['connect']))
-{
-    $dbLink = connect_bd();
-    $mail = $_POST['login_mail'];
-    $mdp = $_POST['login_mdp'];
 
-    if(empty($mdp))
-        array_push($error, 'Mot de Passe non remplie');
-    if(empty($mail))
-        array_push($error, 'Mail non rempli');
+if (isset($_POST['submit'])){
+    $pseudo = $_POST['pseudo'];
+    $mdp = $_POST['mdp'];
+    //a enlever
+    $hostname = 'mysql-vanestarremaurel.alwaysdata.net';
+    $username = '245082';
+    $pwd = 'vanestarre!0';
+    $db = 'vanestarremaurel_admin';
 
+    $connect = mysqli_connect($hostname, $username, $pwd, $db);
 
-    $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
-
-    $query_mdp = "SELECT MDP FROM USER WHERE '$mail' = MAIL";
-    $result = mysqli_query($dbLink, $query_mdp);
-
-    if (password_verify($mdp_hash, $result));
-    {
-        $query_id = "SELECT ID FROM USER WHERE MAIL = '$mail'";
-        $result_id = mysqli_query($dbLink, $query_id);
-        $_SESSION['user'] =  $result_id;
-
-        $query_role = "SELECT ROLE FROM USER WHERE MAIL = '$mail'";
-        $result_role = mysqli_query($dbLink, $query_role);
-
-        if ($result_role == 1)
-        {
-            header(vanestarre.php);
-        }
-        else
-        {
-            header(membre.php);
-        }
+    if(!$connect){
+        die('Problème de connection: ' . mysqli_connect_error());
     }
+
+    require_once 'connectdb.inc.php';
+    require_once 'utils.inc.php';
+
+    if (emptyInputLogin($pseudo, $mdp) !== false) {
+        header('location: ../loginPage.php?error=emptyinput');
+        exit();
+    }
+
+    userLogin($connect, $pseudo, $mdp);
+
+}
+else{
+    header('location: ../loginPage.php');
+    exit();
 }

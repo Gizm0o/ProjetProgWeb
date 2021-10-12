@@ -10,6 +10,6 @@ if(isset($_POST['id']) AND !empty($_POST['id'])) {
     mysqli_stmt_bind_param($suppr,'s',$suppr_id);
     mysqli_stmt_execute($suppr);
 
-    header('Location: http://vanestarremaurel.alwaysdata.net/index.php')
+    header('Location: http://vanestarremaurel.alwaysdata.net/index.php');
 }
 ?>

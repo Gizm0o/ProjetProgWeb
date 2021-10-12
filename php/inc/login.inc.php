@@ -1,5 +1,5 @@
 <?php
-include 'connect-db.php';
+include 'connectdb.inc.php';
 if (isset($_POST['connect']))
 {
     $dbLink = connect_bd();

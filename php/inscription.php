@@ -1,13 +1,21 @@
 <?php
-include 'connect-db.php';
-if (isset($_POST['inscript']))
+include 'loginPage.php';
+$action = $_POST['inscript'];
+
+if ($action == 'inscript')
 {
     session_start();
-    $dbLink = connect_bd();
-    $mail = $_POST('ins_mail');
-    $pseudo = $_POST('ins_pseudo');
-    $mdp = $_POST('ins_mdp');
-    $mdp2 = $_POST('ins_vmdp');
+    //$dbLink = connect_bd();
+    $dbLink = mysqli_connect('mysql-vanessamaurel.alwaysdata.net', '245082',
+        'vanestarre!0')
+        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink, 'vanessamaurel_admin')
+        or die('Erreur dans la sélection de la base :' . mysqli_error($dbLink));
+
+    $mail = $_POST['ins_mail'];
+    $pseudo = $_POST['ins_pseudo'];
+    $mdp = $_POST['ins_mdp'];
+    $mdp2 = $_POST['ins_vmdp'];
 
     if(empty($mdp))
         array_push($error, 'Mot de Passe non remplie');
@@ -19,14 +27,14 @@ if (isset($_POST['inscript']))
     if($mdp != $mdp2)
         array_push($error, 'Les mots de Passes ne correspondent pas');
 
-    $query_vmail = "SELECT * FROM USER WHERE '$mail' = MAIL LIMIT 1 ";
+    $query_vmail = 'SELECT * FROM USER WHERE ' . $mail . ' = MAIL LIMIT 1 ';
     $result_query_vmail = mysqli_query($dbLink, $query_vmail);
     $result_vmail = mysqli_fetch_assoc($result_query_vmail);
     if($result_vmail and $result_vmail['MAIL'] == $mail)
         array_push($error, 'L\'addresse e-mail est déjà utilisée');
 
 
-    $query_vpseudo = "SELECT * FROM USER WHERE '$pseudo' = PSEUDO LIMIT 1";
+    $query_vpseudo = 'SELECT * FROM USER WHERE ' . $pseudo . ' = PSEUDO LIMIT 1';
     $result_query_vpseudo = mysqli_query($dbLink, $query_vpseudo);
     $result_vpseudo = mysqli_fetch_assoc($result_query_vpseudo);
     if($result_vpseudo and $result_vpseudo['PSEUDO'] == $pseudo)
@@ -34,14 +42,14 @@ if (isset($_POST['inscript']))
 
     $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
 
-    $query_insert = "INSERT INTO USER (PSEUDO, MAIL, MDP, ROLE) VALUES ('$pseudo', '$mail', '$mdp_hash', '2')" ;
-    mysqli_query($dbLink, $query_insert);
+    $query_insert = mysqli_prepare($dbLink,'INSERT INTO USER (PSEUDO, MAIL, MDP, ROLE) VALUES (' . $pseudo . ', ' . $mail . ', ' . $mdp_hash . ', ' . 2 . ')') ;
+    mysqli_stmt_execute($query_insert);
 
     $user_id = mysqli_insert_id($dbLink);
 
     $_SESSION['user'] = $user_id;
 
-    $query_role = "SELECT ROLE FROM USER WHERE PSEUDO = '$pseudo'";
+    $query_role = 'SELECT ROLE FROM USER WHERE PSEUDO = ' . $pseudo . '';
     $role = mysqli_connect($dbLink, $query_role);
 
     if( $role == '1')

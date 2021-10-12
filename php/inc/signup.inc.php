@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $mdp = $_POST['mdp'];
     $vmdp = $_POST['vmdp'];
     // a enlever
-    $hostname = 'mysql-vanessamaurel.alwaysdata.net';
+    $hostname = 'mysql-vanestarremaurel.alwaysdata.net';
     $username = '245082';
     $pwd = 'vanestarre!0';
     $db = 'vanestarremaurel_admin';

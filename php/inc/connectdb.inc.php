@@ -1,6 +1,6 @@
 <?php
 
-$hostname = 'mysql-vanessamaurel.alwaysdata.net';
+$hostname = 'mysql-vanestarremaurel.alwaysdata.net';
 $username = '245082';
 $pwd = 'vanestarre!0';
 $db = 'vanestarremaurel_admin';

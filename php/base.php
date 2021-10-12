@@ -1,4 +1,4 @@
-<?php start_page('base')?>
+/*<?php start_page('base')?>
 <?php
     $dbLink = mysqli_connect('mysql-vanestarremaurel.alwaysdata.net', '245082', 'vanestarre!0')
     or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
@@ -34,4 +34,4 @@
     echo 'Bonjour, 
     Votre inscription a bien été enregistrée, merci!'
 ?>
-<?php end_page(); ?>
+<?php end_page(); ?>*/

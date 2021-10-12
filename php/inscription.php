@@ -1,9 +1,9 @@
 <?php
-require 'connect-db.php';
+include 'connect-db.php';
 if (isset($_POST['inscript']))
 {
     session_start();
-    $dbLink = $_POST['$dbLink'];
+    $dbLink = connect_bd();
     $mail = $_POST('ins_mail');
     $pseudo = $_POST('ins_pseudo');
     $mdp = $_POST('ins_mdp');
@@ -19,14 +19,14 @@ if (isset($_POST['inscript']))
     if($mdp != $mdp2)
         array_push($error, 'Les mots de Passes ne correspondent pas');
 
-    $query_vmail = 'SELECT * FROM USER WHERE '$mail' = MAIL LIMIT 1 ';
+    $query_vmail = "SELECT * FROM USER WHERE '$mail' = MAIL LIMIT 1 ";
     $result_query_vmail = mysqli_query($dbLink, $query_vmail);
     $result_vmail = mysqli_fetch_assoc($result_query_vmail);
     if($result_vmail and $result_vmail['MAIL'] == $mail)
         array_push($error, 'L\'addresse e-mail est déjà utilisée');
 
 
-    $query_vpseudo = 'SELECT * FROM USER WHERE '$pseudo' = PSEUDO LIMIT 1';
+    $query_vpseudo = "SELECT * FROM USER WHERE '$pseudo' = PSEUDO LIMIT 1";
     $result_query_vpseudo = mysqli_query($dbLink, $query_vpseudo);
     $result_vpseudo = mysqli_fetch_assoc($result_query_vpseudo);
     if($result_vpseudo and $result_vpseudo['PSEUDO'] == $pseudo)

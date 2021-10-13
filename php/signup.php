@@ -1,30 +1,34 @@
 <?php
-include_once "inc/utils.inc.php";
+include_once "php/inc/utils.inc.php";
 start_page('Sign Up');
 ?>
-
+    <head>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
     <body>
-        <form action="inc/signup.inc.php" method="post" class="formLog">
-            <input name="mail" type="text" placeholder="Adresse Mail">
-            <input name="pseudo" type="text" placeholder="Pseudo">
-            <input name="mdp" type="password" placeholder="Mot de Passe">
-            <input name="vmdp" type="password" placeholder="Verifier Mot de Passe">
-            <button type="submit" name="submit"> S'inscrire</button>
-        </form>
+        <div class="formLog">
+            <form action="php/inc/signup.inc.php" method="post" class="formLog">
+                <input class="field" name="mail" type="text" placeholder="Adresse Mail">
+                <input class="field" name="pseudo" type="text" placeholder="Pseudo">
+                <input class="field" name="mdp" type="password" placeholder="Mot de Passe">
+                <input class="field" name="vmdp" type="password" placeholder="Verifier Mot de Passe">
+                <button class="submit" type="submit" name="submit"> S'inscrire</button>
+            </form>
+        </div>
     </body>
 
 <?php
     if(isset($_GET['error'])){
         if($_GET['error'] == 'emptyinput') {
-            echo '<p> Vous n\'avez pas tous rempli </p>';
+            echo '<p class="error"> Vous n\'avez pas tous rempli </p>';
         }
         if($_GET['error'] == 'invalidmail') {
-            echo '<p> Votre addresse mail n\'est pas valide </p>';
+            echo '<p class="error"> Votre addresse mail n\'est pas valide </p>';
         }
         if($_GET['error'] == 'mdpTest') {
-            echo '<p> Les mots de passes ne sont pas les mêmes</p>';
+            echo '<p class="error"> Les mots de passes ne sont pas les mêmes</p>';
         }
         if($_GET['error'] == 'existpseudo') {
-            echo '<p> L\'addresse mail ou votre pseudo est déja utilisé</p>';
+            echo '<p class="error"> L\'addresse mail ou votre pseudo est déja utilisé</p>';
         }
     }

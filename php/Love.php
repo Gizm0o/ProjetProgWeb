@@ -1,6 +1,9 @@
 <?php
-require_once 'inc/connectdb.inc.php';
-$connect = connect_db();
+// Connection BD
+require_once "inc/connectdb.inc.php";
+
+$dbLink = connect_db();
+
 // Post incrementation
 $query = 'SELECT LOVE  FROM MSG WHERE IDM = 1';
 $result = mysqli_query($dbLink, $query);

@@ -24,7 +24,7 @@
                     <?= '*', $cont, '*'?>
                     <a class="button" href="php/message.php?edit=<?= $idm ?> "> <button>Modifier</button> </a> 
                     <a class="button" href="php/suppr.php?edit=<?= $idm ?> "> <button>Supprimer</button> </a> </br>
-                </li></br>
+                </li>
             
             <?php } ?>
         <ul>

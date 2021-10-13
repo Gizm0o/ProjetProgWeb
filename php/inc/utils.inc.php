@@ -5,25 +5,23 @@ function start_page($title)
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title><?php echo $title; ?></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <meta name="description" content="Bonjour, je m'appelle Vanessa Maurel. Voici mon premier Réseau Social."> 
     <meta name="keywords" content="Vanessa Maurel">
     <nav class="menu">
-        <li class="menu"> <a href="index.php"> Accueil</a> </li>
+        <input type="image" class="Logo" onclick="window.location.href = '../../index.php';" alt="Accueil"
+               src="images/Vanestarre.png">
         <?php
             if (isset($_SESSION['user_id'])){
-                echo '<li class="menu"> <a href="inc/logout.inc.php"> Se déconnecter</a> </li>';
-                echo '<p> BBBBBBBBBBBBBBBBBB </p>';
+                echo '<li class="menu_li"  > <a class="menu_a" href="php/inc/logout.inc.php"> Se déconnecter</a> </li>';
             }
             else{
-               echo '<li class="menu"> <a href="loginPage.php"> Se connecter</a> </li>';
-                echo '<li class="menu"> <a href="signup.php"> S\'inscrire</a> </li>';
-                echo '<p> AAAAAAAAAAAAAAAAAAAA </p>';
+               echo '<li class="menu_li" > <a class="menu_a"  href="loginPage.php"> Se connecter</a> </li>';
+                echo '<li class="menu_li" > <a class="menu_a"  href="signup.php"> S\'inscrire</a> </li>';
             }
         ?>
     </nav>
@@ -116,7 +114,7 @@ function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
 
     $pseudo_exist = exist($connect, $pseudo, $pseudo);
 
-    $_SESSION['user_id'] = $pseudo_exist['ID'];
+    $_SESSION['user_id'] = $pseudo_exist['IDU'];
     $_SESSION['pseudo_id'] = $pseudo_exist['PSEUDO'];
     $_SESSION['role'] = $pseudo_exist['ROLE'];
     session_start();
@@ -141,7 +139,7 @@ function userLogin($connect, $pseudo, $mdp){
     }
     else {
         session_start();
-        $_SESSION['user_id'] = $pseudo_exist['ID'];
+        $_SESSION['user_id'] = $pseudo_exist['IDU'];
         $_SESSION['pseudo_id'] = $pseudo_exist['PSEUDO'];
         $_SESSION['role'] = $pseudo_exist['ROLE'];
         header('location: ../../index.php');

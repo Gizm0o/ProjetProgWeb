@@ -1,11 +1,13 @@
 <?php
-include_once "inc/utils.inc.php";
+include_once "php/inc/utils.inc.php";
 start_page('Login');
 ?>
-
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
 <body>
     <div class="formLog">
-        <form action="inc/login.inc.php" method="post" class="formLog">
+        <form action="php/inc/login.inc.php" method="post" class="formLog">
             <input class="field" name="pseudo" type="text" placeholder="Pseudo/Mail">
             <input class="field" name="mdp" type="password" placeholder="Mot de Passe">
             <button class="submit" type="submit" name="submit">Se Connecter</button>

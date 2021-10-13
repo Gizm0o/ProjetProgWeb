@@ -1,11 +1,13 @@
 <?php
-include_once "inc/utils.inc.php";
+include_once "php/inc/utils.inc.php";
 start_page('Sign Up');
 ?>
-
+    <head>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
     <body>
         <div class="formLog">
-            <form action="inc/signup.inc.php" method="post" class="formLog">
+            <form action="php/inc/signup.inc.php" method="post" class="formLog">
                 <input class="field" name="mail" type="text" placeholder="Adresse Mail">
                 <input class="field" name="pseudo" type="text" placeholder="Pseudo">
                 <input class="field" name="mdp" type="password" placeholder="Mot de Passe">

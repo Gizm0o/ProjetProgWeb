@@ -11,6 +11,6 @@ if(isset($_POST['IDM']) AND !empty($_POST['IDM'])) {
     mysqli_stmt_bind_param($suppr,'s',$suppr_id);
     mysqli_stmt_execute($suppr);
 
-    header('Location: https://www.youtube.com/watch?v=I9RBJOtaUno&t=470s');
+    header('Location: http://vanestarremaurel.alwaysdata.net');
 }
 ?>

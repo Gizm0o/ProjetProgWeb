@@ -4,6 +4,7 @@ body{
 }
 *{
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .formLog{
@@ -48,4 +49,8 @@ body{
 }
 .mess{
     z-index: 3;
+}
+.button{
+    text-decoration: none;
+    color: black;
 }

@@ -6,7 +6,7 @@
 
     $connect = connect_db();
      //permet de trier les messages par date de publication
-    $stmt = mysqli_prepare($connect, 'SELECT * FROM MSG ORDER BY date_time_publication DESC');
+    $stmt = mysqli_prepare($connect, 'SELECT IDM, CONT FROM MSG ORDER BY date_time_publication DESC');
     mysqli_stmt_execute($stmt);
     
 ?>
@@ -20,12 +20,14 @@
             <h1 class="name">Vanestarre</h1>
         </header>
         <ul>
-            <?php while($p = mysqli_stmt_fetch($stmt)) { ?>
+            <?php 
+            mysqli_stmt_bind_result($stmt, $idm, $cont);
+            while($p = mysqli_stmt_fetch($stmt)) { ?>
             
                 <li>
-                    <?= $p['CONT'], $p['TAG']?>
-                    <a href="php/message.php?edit=<?= $p['IDM']?> "> Modifier </a> |
-                    <a href="php/suppr.php?edit=<?= $p['IDM']?> "> Supprimer </a>
+                    <?= '*', $cont, '*'?>
+                    <a class="button" href="php/message.php?edit=<?= $idm ?> "> <button>Modifier</button> </a> |
+                    <a class="button" href="php/suppr.php?edit=<?= $idm ?> "> <button>Supprimer</button> </a>
                 </li>
             
             <?php } ?>
@@ -42,7 +44,7 @@
         if($mode_edition == 1) { ?> 
     value="<?= $edit_tag['NTAG'] ?>"<?php } ?>/> <br/>
     
-    <input type="file" name="image_pub" accept="image/png, image/jpeg" <?php 
+    <input type="file" name="image_pub" accept=" image/jpeg" <?php 
         if($mode_edition == 1) { ?> 
     value="<?= $edit_publication['IMG'] ?>"<?php } ?>/> <br/>
     

@@ -8,16 +8,17 @@ if(isset($_POST['edit']) AND !empty($_POST['edit'])) {
     $mode_edition = 1;
 
     $edit_id = htmlspecialchars($_POST['edit']); 
-    $edit_publication = mysqli_prepare($connect, 'SELECT * FROM MSG WHERE IDM = ?');
+    $edit_publication = mysqli_prepare($connect, 'SELECT IDM, CONT FROM MSG WHERE IDM = ?');
     mysqli_stmt_bind_param($edit_publication,'s',$edit_id);
     mysqli_stmt_execute($edit_publication); 
 
-    $edit_tag = mysqli_prepare($connect, 'SELECT * FROM TAG WHERE IDM = ?');
+    $edit_tag = mysqli_prepare($connect, 'SELECT IDM, NTAG FROM TAG WHERE IDM = ?');
     mysqli_stmt_bind_param($edit_tag,'s',$edit_id);
     mysqli_stmt_execute($edit_tag);
 
     if(mysqli_stmt_num_rows($edit_publication) == 1){
         //vérifie si l'article existe
+        mysqli_stmt_bind_result($edit_publication, $idm, $cont);
         $edit_publication = mysqli_stmt_fetch($edit_publication);
 
     } else {
@@ -48,7 +49,7 @@ if(isset($_POST['contenu_pub'], $_POST['tag_pub'], $_POST['image_pub'] )){ //On 
             
             mysqli_stmt_bind_param($update, 'ss', $contents, $edit_id);
             mysqli_stmt_execute($update);
-            header('Location: http://vanestarremaurel.alwaysdata.net/index.php' .$edit_id);
+            header('Location: http://vanestarremaurel.alwaysdata.net' .$edit_id);
             $message = 'Votre article a bien été changé';
         }
 

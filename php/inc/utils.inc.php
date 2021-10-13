@@ -6,17 +6,30 @@ function start_page($title)
 <head>
     <title><?php echo $title; ?></title>
     <meta charset="utf-8">
-    <link id="css" rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <meta name="description" content="Bonjour, je m'appelle Vanessa Maurel. Voici mon premier Réseau Social."> 
     <meta name="keywords" content="Vanessa Maurel">
+    <nav class="menu">
+        <li class="menu"> <a href="index.php"> Accueil</a> </li>
+        <?php
+            if (isset($_SESSION['user_id'])){
+                echo '<li class="menu"> <a href="php/inc/logout.inc.php"> Se déconnecter</a> </li>';
+            }
+            else{
+               echo '<li class="menu"> <a href="php/loginPage.php"> Se connecter</a> </li>';
+                echo '<li class="menu"> <a href="php/signup.php"> S\'inscrire</a> </li>';
+            }
+        ?>
+    </nav>
 </head>
 <body>
 <?php
 }
-?>
+
+ ?>
+
 <?php function end_page () { ?>
 </body>
 </html>
@@ -124,4 +137,5 @@ function userLogin($connect, $pseudo, $mdp){
         header('location: ../index.php');
     }
 }
+
 

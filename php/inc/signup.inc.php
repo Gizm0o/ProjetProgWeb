@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
     $pseudo = $_POST['pseudo'];
     $mdp = $_POST['mdp'];
     $vmdp = $_POST['vmdp'];
-    // a enlever
 
     require_once 'connectdb.inc.php';
     require_once 'utils.inc.php';

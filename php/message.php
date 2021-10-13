@@ -4,19 +4,20 @@
     $connect = connect_db();
 $mode_edition = 0;
 
-if(isset($_POST['edit']) AND !empty($_POST['edit'])) {
+if(isset($_GET['edit']) AND !empty($_GET['edit'])) {
     $mode_edition = 1;
 
-    $edit_id = htmlspecialchars($_POST['edit']); 
+    $edit_id = htmlspecialchars($_GET['edit']); 
+    /*$edit_tag = mysqli_prepare($connect, 'SELECT IDM, NTAG FROM TAG WHERE IDM = ?');
+    mysqli_stmt_bind_param($edit_tag,'s',$edit_id);
+    mysqli_stmt_execute($edit_tag);*/
+
     $edit_publication = mysqli_prepare($connect, 'SELECT IDM, CONT FROM MSG WHERE IDM = ?');
     mysqli_stmt_bind_param($edit_publication,'s',$edit_id);
     mysqli_stmt_execute($edit_publication); 
-
-    $edit_tag = mysqli_prepare($connect, 'SELECT IDM, NTAG FROM TAG WHERE IDM = ?');
-    mysqli_stmt_bind_param($edit_tag,'s',$edit_id);
-    mysqli_stmt_execute($edit_tag);
-
-    if(mysqli_stmt_num_rows($edit_publication) == 1){
+    $nbr = mysqli_stmt_num_rows($edit_publication);
+    
+    if($nbr == 0){
         //vérifie si l'article existe
         mysqli_stmt_bind_result($edit_publication, $idm, $cont);
         $edit_publication = mysqli_stmt_fetch($edit_publication);
@@ -49,7 +50,7 @@ if(isset($_POST['contenu_pub'], $_POST['tag_pub'], $_POST['image_pub'] )){ //On 
             
             mysqli_stmt_bind_param($update, 'ss', $contents, $edit_id);
             mysqli_stmt_execute($update);
-            header('Location: http://vanestarremaurel.alwaysdata.net' .$edit_id);
+            header('Location: http://vanestarremaurel.alwaysdata.net');
             $message = 'Votre article a bien été changé';
         }
 
@@ -61,7 +62,21 @@ if(isset($_POST['contenu_pub'], $_POST['tag_pub'], $_POST['image_pub'] )){ //On 
 
 ?>
 
-
+<form method="POST" name="mess"> <!--Création d'un "formulaire pour créer les publications"--> 
+    <textarea type="text" name="contenu_pub" placeholder="Votre message" ><?php 
+        if($mode_edition == 1) { ?> 
+    <?= $edit_publication['CONT'] ?><?php } ?></textarea> <br/>
+    
+    <input type="text" name="tag_pub" placeholder="Votre TAG" <?php 
+        if($mode_edition == 1) { ?> 
+    value="<?= $edit_tag['NTAG'] ?>"<?php } ?>/> <br/>
+    
+    <input type="file" name="image_pub" accept=" image/jpeg" <?php 
+        if($mode_edition == 1) { ?> 
+    value="<?= $edit_publication['IMG'] ?>"<?php } ?>/> <br/>
+    
+    <input type="submit" value="Publier"/><br/>
+</form>
 
 <?php 
     if(isset($message)) {echo $message;}

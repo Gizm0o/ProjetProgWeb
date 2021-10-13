@@ -24,8 +24,13 @@
             
                 <li>
                     <?= $p['CONT'], $p['TAG']?>
+<<<<<<< HEAD
                     <a href="php/message.php?edit=<?= $p['IDM']?> "> Modifier </a> |
                     <a href="php/suppr.php?edit=<?= $p['IDM']?> "> Supprimer </a>
+=======
+                    <a href="php/message.php?edit=<?= $a['IDM']?> "> Modifier </a> |
+                    <a href="php/suppr.php?edit=<?= $a['IDM']?> "> Supprimer </a>
+>>>>>>> 566424f3e78d7c0cf3164c60e379d1ef2a01918f
                 </li>
             
             <?php } ?>
@@ -33,7 +38,11 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <form method="POST" name="mess"> <!--Création d'un "formulaire pour créer les publications"--> 
+=======
+<form method="POST"> <!--Création d'un "formulaire pour créer les publications" -->
+>>>>>>> 566424f3e78d7c0cf3164c60e379d1ef2a01918f
     <textarea type="text" name="contenu_pub" placeholder="Votre message" ><?php 
         if($mode_edition == 1) { ?> 
     <?= $edit_publication['CONT'] ?><?php } ?></textarea> <br/>

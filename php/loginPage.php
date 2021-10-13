@@ -4,7 +4,7 @@ start_page('Login');
 ?>
 
 <body>
-<form action="inc/login.inc.php" method="post">
+<form action="inc/login.inc.php" method="post" class="formLog">
     <input name="pseudo" type="text" placeholder="Pseudo/Mail">
     <input name="mdp" type="password" placeholder="Mot de Passe">
     <button type="submit" name="submit">Se Connecter</button>

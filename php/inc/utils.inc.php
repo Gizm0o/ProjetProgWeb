@@ -1,22 +1,39 @@
 <?php
 function start_page($title)
 {
+    session_start();
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <title><?php echo $title; ?></title>
     <meta charset="utf-8">
-    <link id="css" rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <meta name="description" content="Bonjour, je m'appelle Vanessa Maurel. Voici mon premier Réseau Social."> 
     <meta name="keywords" content="Vanessa Maurel">
+    <nav class="menu">
+        <li class="menu"> <a href="index.php"> Accueil</a> </li>
+        <?php
+            if (isset($_SESSION['user_id'])){
+                echo '<li class="menu"> <a href="inc/logout.inc.php"> Se déconnecter</a> </li>';
+                echo '<p> BBBBBBBBBBBBBBBBBB </p>';
+            }
+            else{
+               echo '<li class="menu"> <a href="loginPage.php"> Se connecter</a> </li>';
+                echo '<li class="menu"> <a href="signup.php"> S\'inscrire</a> </li>';
+                echo '<p> AAAAAAAAAAAAAAAAAAAA </p>';
+            }
+        ?>
+    </nav>
 </head>
 <body>
 <?php
 }
-?>
+
+ ?>
+
 <?php function end_page () { ?>
 </body>
 </html>
@@ -80,10 +97,8 @@ function exist($connect, $pseudo, $mail) {
         return $row;
     }
     else{
-        $result = false;
-        return $result;
+        return false;
     }
-
     mysqli_stmt_close($stmt);
 }
 function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
@@ -98,7 +113,15 @@ function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
     mysqli_stmt_bind_param($stmt, "sssi", $pseudo, $mail, $mdp_hash, $role);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header('location: ../signup.php?error=none');
+
+    $pseudo_exist = exist($connect, $pseudo, $pseudo);
+
+    $_SESSION['user_id'] = $pseudo_exist['ID'];
+    $_SESSION['pseudo_id'] = $pseudo_exist['PSEUDO'];
+    $_SESSION['role'] = $pseudo_exist['ROLE'];
+    session_start();
+
+    header('location: ../../index.php');
 }
 
 function userLogin($connect, $pseudo, $mdp){
@@ -116,12 +139,13 @@ function userLogin($connect, $pseudo, $mdp){
         header('location: ../loginPage.php?error=login');
         exit();
     }
-    elseif ($verif === true){
+    else {
         session_start();
         $_SESSION['user_id'] = $pseudo_exist['ID'];
         $_SESSION['pseudo_id'] = $pseudo_exist['PSEUDO'];
         $_SESSION['role'] = $pseudo_exist['ROLE'];
-        header('location: ../index.php');
+        header('location: ../../index.php');
     }
 }
+
 

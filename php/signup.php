@@ -4,7 +4,7 @@ start_page('Sign Up');
 ?>
 
     <body>
-        <form action="inc/signup.inc.php" method="post">
+        <form action="inc/signup.inc.php" method="post" class="formLog">
             <input name="mail" type="text" placeholder="Adresse Mail">
             <input name="pseudo" type="text" placeholder="Pseudo">
             <input name="mdp" type="password" placeholder="Mot de Passe">

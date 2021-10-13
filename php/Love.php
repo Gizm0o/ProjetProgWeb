@@ -1,11 +1,6 @@
 <?php
-// Connection BD
-$dbLink = mysqli_connect('mysql-vanestarremaurel.alwaysdata.net', '245082', 'vanestarre!0')
-or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
-
-mysqli_select_db($dbLink, 'vanestarremaurel_admin')
-or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
+require_once 'inc/connectdb.inc.php';
+$connect = connect_db();
 // Post incrementation
 $query = 'SELECT LOVE  FROM MSG WHERE IDM = 1';
 $result = mysqli_query($dbLink, $query);

@@ -7,8 +7,9 @@ body{
 }
 
 .formLog{
-    z-index: 3;
     display: flex;
+    flex-direction: column;
+    
 }
 .menu{
     z-index:3;

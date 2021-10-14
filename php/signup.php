@@ -8,10 +8,10 @@ start_page('Sign Up');
     <body>
         <div class="formLog">
             <form action="php/inc/signup.inc.php" method="post" class="formLog">
-                <input class="field" name="mail" type="text" placeholder="Adresse Mail">
-                <input class="field" name="pseudo" type="text" placeholder="Pseudo">
-                <input class="field" name="mdp" type="password" placeholder="Mot de Passe">
-                <input class="field" name="vmdp" type="password" placeholder="Verifier Mot de Passe">
+                <input class="field" name="mail" type="text" placeholder="Adresse Mail"  maxlength = "30">
+                <input class="field" name="pseudo" type="text" placeholder="Pseudo"  maxlength = "20">
+                <input class="field" name="mdp" type="password" placeholder="Mot de Passe" maxlength = "20">
+                <input class="field" name="vmdp" type="password" placeholder="Verifier Mot de Passe" maxlength = "20">
                 <button class="submit" type="submit" name="submit"> S'inscrire</button>
             </form>
         </div>

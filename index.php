@@ -1,10 +1,9 @@
-<?php 
+<?php
     require_once 'php/inc/utils.inc.php'; 
     require_once 'php/inc/connectdb.inc.php';
     start_page ('Vanestarre');
     require_once 'php/message.php';
     require_once 'php/suppr.php';
-
 
     $connect = connect_db();
      //permet de trier les messages par date de publication

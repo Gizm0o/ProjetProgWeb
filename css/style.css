@@ -1,34 +1,56 @@
 body{
-    background-image: url("../images/fond2.jfif");
-    margin: 0px;
+    text-align: center;
 }
 *{
+    background-color: hotpink;
     font-family: Arial, Helvetica, sans-serif;
-
-}
-
-.formLog{
-    z-index: 3;
     display: flex;
-}
-.menu{
-    z-index:3;
-    display: flex;
-
-}
-.Logo{
-    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-top: 0px;
+
+}
+formLog{
+    display: block ;
+    text-align: center;
+}
+
+form{
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: auto;
-    transition: 00.2s;
+    text-align: left;
 }
-.Logo:hover{
-    transform: scale(1.15);
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 15px;
+    padding: 15px;
+    overflow: hidden;
 }
+.menu_li{
+    float: left;
+}
+.menu_li:last-child{
+}
+.menu_a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+    text-decoration: none;
+}
+.menu_a:hover{
+    background-color: violet;
+}
+
+.Logo{
+    height: 50px;
+}
+
 .Publi{
     text-align: center;
     margin-top: 0px;
@@ -53,4 +75,61 @@ body{
 .button{
     text-decoration: none;
     color: black;
+}
+.formLog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+textarea{
+    min-width: 500px;
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color:  #cdb4db;
+}
+input[type=text]{
+    min-width: 500px;
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color:  #cdb4db;
+}
+input[type=password]{
+    min-width: 500px;
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #cdb4db;
+}
+.submit{
+    background-color:  #cdb4db;
+    border-radius: 4px;
+    min-width: 500px;
+    width: 500px;
+    text-decoration: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+input{
+    padding-bottom: 20px;
+}
+.tag{
+    min-width: 300px;
+    width: 300px;
+    padding: 15px;
+    margin-left: 100px;
+}
+.submitR{
+    background-color: #cdb4db;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+
 }

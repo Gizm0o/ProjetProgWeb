@@ -8,8 +8,8 @@ start_page('Login');
 <body>
     <div class="formLog">
         <form action="php/inc/login.inc.php" method="post" class="formLog">
-            <input class="field" name="pseudo" type="text" placeholder="Pseudo/Mail">
-            <input class="field" name="mdp" type="password" placeholder="Mot de Passe">
+            <input class="field" name="pseudo" type="text" placeholder="Pseudo/Mail"  maxlength = "20">
+            <input class="field" name="mdp" type="password" placeholder="Mot de Passe"  maxlength = "20">
             <button class="submit" type="submit" name="submit">Se Connecter</button>
         </form>
     </div>

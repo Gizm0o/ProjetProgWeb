@@ -24,6 +24,10 @@ function start_page($title)
                 echo '<li class="menu_li" > <a class="menu_a"  href="signup.php"> S\'inscrire</a> </li>';
             }
         ?>
+        <form action="recherche.php" method="post">
+            <input class="tag" type="text" maxlength="30" placeholder="Recherche par Tag" name="tag" >
+            <button class="submit" type="submit" name="submit">Rechercher</button>
+        </form>
     </nav>
 </head>
 <body>
@@ -145,5 +149,4 @@ function userLogin($connect, $pseudo, $mdp){
         header('location: ../../index.php');
     }
 }
-
 

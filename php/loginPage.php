@@ -2,7 +2,7 @@
 include_once "php/inc/utils.inc.php";
 start_page('Login');
 ?>
-//affichage du formulaire permettant de se connecter
+<!--affichage du formulaire permettant de se connecter-->
 <head>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
@@ -16,7 +16,7 @@ start_page('Login');
     </div>
 </body>
 
-//affichage des erreurs
+<!--//affichage des erreurs-->
 <?php
 if(isset($_GET['error'])) {
     if ($_GET['error'] == 'emptyinput') {

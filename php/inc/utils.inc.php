@@ -1,4 +1,5 @@
 <?php
+//fonction permettant de générer le header
 function start_page($title)
 {
     session_start();
@@ -35,7 +36,7 @@ function start_page($title)
 }
 
  ?>
-
+//fonction permettant de générer le header
 <?php function end_page () { ?>
 </body>
 </html>
@@ -43,6 +44,7 @@ function start_page($title)
 }
 ?>
 <?php
+//fonction vérifiant si les inputs sont remplis de la page d'Inscription
 function emptyInputSignup($mail, $pseudo, $mdp, $vmdp): bool
 {
     if (empty($mail) || empty($pseudo)  || empty($mdp) || empty($vmdp)){
@@ -53,6 +55,7 @@ function emptyInputSignup($mail, $pseudo, $mdp, $vmdp): bool
     }
     return $result;
 }
+//fonction vérifiant si les inputs sont remplis de la page de connection
 function emptyInputLogin($pseudo, $mdp): bool
 {
     if (empty($pseudo)  || empty($mdp)){
@@ -63,6 +66,7 @@ function emptyInputLogin($pseudo, $mdp): bool
     }
     return $result;
 }
+//fonction vérifiant si l"input est bien un mail
 function invalidMail($mail): bool
 {
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)){
@@ -73,6 +77,7 @@ function invalidMail($mail): bool
     }
     return $result;
 }
+//fonction vérifiant si les deux champs de mot de passe corresponde
 function mdpTest($mdp, $vmdp): bool
 {
     if ($mdp !==  $vmdp){
@@ -83,6 +88,7 @@ function mdpTest($mdp, $vmdp): bool
     }
     return $result;
 }
+//fonction vérifiant si le pseudo et le mail existent déja la base de donnée
 function exist($connect, $pseudo, $mail) {
     $query = 'SELECT * FROM USER WHERE PSEUDO = ? OR MAIL = ? ;';
     $stmt = mysqli_stmt_init($connect);
@@ -103,6 +109,7 @@ function exist($connect, $pseudo, $mail) {
     }
     mysqli_stmt_close($stmt);
 }
+//fonction créeant un nouvel utilisateur dans la base de donnée
 function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
     $query = 'INSERT INTO USER (PSEUDO, MAIL, MDP, ROLE) VALUES (?, ?, ?, ?)';
     $stmt = mysqli_stmt_init($connect);
@@ -125,7 +132,8 @@ function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
 
     header('location: ../../index.php');
 }
-
+//fonction permettant de connecter l'utilisateur si les informations qu'il a rentré correspondent aux infos de la base
+// de données
 function userLogin($connect, $pseudo, $mdp){
     $pseudo_exist = exist($connect, $pseudo, $pseudo);
 

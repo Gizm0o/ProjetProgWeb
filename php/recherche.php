@@ -9,6 +9,7 @@ $tag = $_POST['tag'];
 
 var_dump($tag);
 
+//première requete ou on recupere le contenu des tag recherché ainsi que l'id des messages associées
 $query = 'SELECT * FROM TAG WHERE ? = NTAG';
 $stmt = mysqli_stmt_init($connect);
 if (!mysqli_stmt_prepare($stmt, $query)){
@@ -23,7 +24,7 @@ $result = mysqli_stmt_get_result($stmt);
 var_dump($result);
 mysqli_stmt_close($stmt);
 
-
+//on recupere le contenu des messages associés au tag de la premiere requete
 $query2 = 'SELECT IDM, CONT FROM MSG ORDER BY date_time_publication DESC';
 $stmt2 = mysqli_stmt_init($connect);
 if (!mysqli_stmt_prepare($stmt2, $query)){
@@ -32,6 +33,7 @@ if (!mysqli_stmt_prepare($stmt2, $query)){
 }
 mysqli_stmt_execute($stmt2);
 
+//afichage des messages (marche pas)
 ?>
 <div class="Publi">
     <ul>

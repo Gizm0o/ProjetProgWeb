@@ -1,5 +1,6 @@
 <?php
-//fonction permettant de générer le header
+//fonction permettant
+// de générer le header
 function start_page($title)
 {
     session_start();
@@ -44,7 +45,8 @@ function start_page($title)
 }
 ?>
 <?php
-//fonction vérifiant si les inputs sont remplis de la page d'Inscription
+//fonction vérifiant si les inputs sont remplis
+// de la page d'Inscription
 function emptyInputSignup($mail, $pseudo, $mdp, $vmdp): bool
 {
     if (empty($mail) || empty($pseudo)  || empty($mdp) || empty($vmdp)){
@@ -55,7 +57,8 @@ function emptyInputSignup($mail, $pseudo, $mdp, $vmdp): bool
     }
     return $result;
 }
-//fonction vérifiant si les inputs sont remplis de la page de connection
+//fonction vérifiant si les inputs sont
+// remplis de la page de connection
 function emptyInputLogin($pseudo, $mdp): bool
 {
     if (empty($pseudo)  || empty($mdp)){
@@ -132,7 +135,8 @@ function createUser($connect, $pseudo, $mail, $mdp, $role = 2) {
 
     header('location: ../../index.php');
 }
-//fonction permettant de connecter l'utilisateur si les informations qu'il a rentré correspondent aux infos de la base
+//fonction permettant de connecter
+// l'utilisateur si les informations qu'il a rentré correspondent aux infos de la base
 // de données
 function userLogin($connect, $pseudo, $mdp){
     $pseudo_exist = exist($connect, $pseudo, $pseudo);
@@ -157,4 +161,5 @@ function userLogin($connect, $pseudo, $mdp){
         header('location: ../../index.php');
     }
 }
+
 

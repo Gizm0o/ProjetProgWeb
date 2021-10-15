@@ -5,13 +5,13 @@
     if (isset($_GET['npage']) && $_GET['npage']) { //on chercher le numéro de la page
         $npage = $_GET['npage'];
         } else {
-            $npage = 1;
+            $npage = 1;//assignation de page nombre à page
             }
 
         $total_par_page = 2;
         $offset = ($npage-1) * $total_par_page; //Offset permet de décaler le résultat à obtenir
-        $previous = $npage - 1;
-        $next = $npage + 1;
+        $previous = $npage - 1; //Pour la page précedente
+        $next = $npage + 1;//Pour la page suivante
         $adjacents = "2"; 
 
         $result_count = mysqli_query($connect,"SELECT COUNT(*) As total_records FROM MSG");

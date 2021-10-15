@@ -4,8 +4,6 @@ require_once 'utils.inc.php';
 start_page('Recherche');
 
 
-
-<?php
 require_once 'inc/connectdb.inc.php';
 require_once 'inc/utils.inc.php';
 start_page('Recherche');

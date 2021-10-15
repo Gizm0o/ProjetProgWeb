@@ -1,5 +1,5 @@
 <?php
-
+//script permettant de se conencter au site
 if (isset($_POST['submit'])){
     $pseudo = $_POST['pseudo'];
     $mdp = $_POST['mdp'];

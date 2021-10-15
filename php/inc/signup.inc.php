@@ -1,5 +1,6 @@
 <?php
 
+//script permettant de s'inscire sur le site
 if (isset($_POST['submit'])) {
 
     $mail = $_POST['mail'];

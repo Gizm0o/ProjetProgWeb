@@ -2,6 +2,8 @@
 include_once "php/inc/utils.inc.php";
 start_page('Sign Up');
 ?>
+
+//formulaire avec les entrées pour s'inscrire sur le site
     <head>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
@@ -17,6 +19,7 @@ start_page('Sign Up');
         </div>
     </body>
 
+//affichage des erreurs
 <?php
     if(isset($_GET['error'])){
         if($_GET['error'] == 'emptyinput') {

@@ -1,0 +1,42 @@
+Equipe Moutarde :
+    ALI Imrane
+    BERSNARD Gwendal
+    BOUDJAOUI Karim
+    LONCARIC Léon
+
+URL : http://vanestarremaurel.alwaysdata.net/
+
+Présentation :
+    Site crée dans le cadre du projet de Programmation Web.
+    Le site est un réseau Social pour Vanestarre nommé Vanestarre où elle peut écrire des messages.
+    Les visiteurs peuvent voir les messages qu'elle écrit et peuvent s'inscrire sur le site pour après se connecter.
+
+
+Choix Techniques :
+    Hébergement fait sur AlwaysData car gratuit et on avait déja tous connaissance de l'interface
+    Administration de la Base de Données fait sur phpMyAdmin car intégré à AlwaysData et simple pour administer la base
+    données
+    Utilisation de GitHub pour versionnage et regroupement du code
+
+Configuration logicielle  minimale : avoir installé un navigateur récent et quelconque
+Configuration logicielle  conseillée : utiliser les navigateurs Safari, Chrome, Mozilla Firefox à jour
+
+
+Identifiants de connexion :
+    Compte administrateur :
+        Pseudo : Vannestare
+        E-mail : vanestarresdab@gmail.com
+        Mot de Passe : vanestarre!0
+
+    Hébergement :
+        E-mail : vanestarresdab@gmail.com
+        Mot de Passe : vanestarre!0
+
+    Base de données :
+        Utilisateur : 245082
+        Mot de Passe : vanestarre!0
+
+    Compte GitHub :
+        E-mail : vanestarresdab@gmail.com
+        Mot de Passe : vanestarre!0
+        Répertoire : https://github.com/LoncaricLeon/ProjetProgWeb

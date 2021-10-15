@@ -1,4 +1,5 @@
 <?php
+//function permettant de se connecter a la base de données
 function connect_db() {
     $hostname = 'mysql-vanestarremaurel.alwaysdata.net';
     $username = '245082';

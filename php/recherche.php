@@ -47,6 +47,13 @@ mysqli_stmt_execute($stmt2);
                 <a class="button" href="php/suppr.php?edit=<?= $idm ?> "> <button>Supprimer</button> </a> </br>
             </li>
 
-        <?php } ?>
+        <?php }
+
+        if (isset($_SESSION['user_id']) && $_SESSION['role'] == 1)
+        {
+
+        }
+        ?>
         <ul>
 </div>
+

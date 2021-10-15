@@ -1,6 +1,6 @@
 <?php
     require_once 'inc/connectdb.inc.php';
-
+    
     $connect = connect_db();
 
 if(isset($_GET['IDM']) AND !empty($_GET['IDM'])) {

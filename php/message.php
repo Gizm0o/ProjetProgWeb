@@ -2,6 +2,7 @@
     require_once 'inc/connectdb.inc.php';
     require_once 'inc/function.inc.php';
 
+
     $connect = connect_db();
     $mode_edition = 0;
 
@@ -49,7 +50,7 @@ if(isset($_POST['contenu'], $_POST['tag'], $_POST['publier'])){ //On regarde si 
             mysqli_stmt_execute($ins); 
 
             $ins = mysqli_prepare($connect,'INSERT INTO IMAGE (IDM, IMG) VALUES (?, ?)'); 
-            mysqli_stmt_bind_param($ins,'ib',$idm,file_get_contents($_FILES['image']['tmp_name'])); //Lit le fichier en string
+        mysqli_stmt_bind_param($ins,'ib',$idm,/*file_get_contents(*/$_FILES['image']['error']/*)*/); //Lit le fichier en string
             mysqli_stmt_execute($ins);
 
             $message = 'Votre article a bien été posté';

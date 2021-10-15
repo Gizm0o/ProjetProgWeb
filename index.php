@@ -4,7 +4,7 @@
     start_page ('Vanestarre');
     require_once 'php/message.php';
     require_once 'php/suppr.php';
-
+    require_once 'php/pagination.php';
     $connect = connect_db();
      //permet de trier les messages par date de publication
     $stmt = mysqli_prepare($connect, 'SELECT IDM, CONT FROM MSG ORDER BY date_time_publication DESC');
@@ -20,7 +20,7 @@
             while($p = mysqli_stmt_fetch($stmt)) { ?>
             
                 <li>
-                    <?= '"', $cont, '"'?>
+                    <?=  'Contenu :  ','   "', $cont, '"'?>
                     <a class="button" href="php/message.php?edit=<?= $idm ?> "> <button>Modifier</button> </a> 
                     <a class="button" href="php/suppr.php?edit=<?= $idm ?> "> <button>Supprimer</button> </a> </br>
             </li>
